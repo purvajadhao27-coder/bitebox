@@ -1,56 +1,81 @@
-<!DOCTYPE html><!--19/8/2026 - 8/24/2026-->
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <!-- -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--viewport = screen , width should devicewidth, initial scale should be 100% 
-    0.5=50%, 1.0 = 100% ,2.0=200%-->
-    <meta name="author" content="purva">
-    <meta name="keywords" content="html,css,java">
-    <!--<meta http-equiv ="refresh" content="30" only for refresh  >-->
-    <!--<meta http-equiv ="refresh" content="60;https://wingz.itvedant.com/site/index"> for refresh 
-   and go to next website added in link-->
-    <title>BiteBox Ecommerce Portal</title>
+<html <head>
+<title>BiteBox Ecommerce Portal</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="author" content="ITVedant" />
+<meta name="keywords" content="data science, java , html" />
+<!-- <meta http-equiv="refresh" content="10;https://www.itvedant.com/" /> -->
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+    }
+
+    nav #logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+    }
+
+    nav #logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+
+    nav #menu ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+
+    }
+
+    nav #menu ul a {
+        text-decoration: none;
+        color: white;
+    }
+
+    nav #menu ul a:hover {
+        color: orange;
+    }
+</style>
 </head>
 
 <body>
     <header>
         <nav>
-            <div name="header">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO1VQ3UZr292GvbK_8dMWuQOPJ_UN7qghR2c06kxT_Zw&s=10"
-                    alt="logo">
+            <div id="logo">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQql0bvupRXrI9MY6cU4vazxosHcOdB9_FuHAkFk8x3rg&s" />
                 <h3>BiteBox</h3>
-                <ul style="list-style-type: square; list-style-image: url('free-check-icon-3278-thumb.png');">
-                    <li>Home</li>
-                    <li>Contactus</li>
-                    <li>Aboutus</li>
-                    <li>Cart</li>
-                    <li>Login</li>
-                </ul>
-
-                <ol style="list-style-type:upper-roman start=10;">
-                    <li><a>Home</a></li>
-                    <li><a>ontactus</a></li>
+            </div>
+            <div id="menu">
+                <ul style="list-style-type:none">
+                    <li><a href="https://www.itvedant.com/">Home</a></li>
+                    <li><a>Contatus</a></li>
                     <li><a>Aboutus</a></li>
                     <li><a>Cart</a></li>
                     <li><a>Login</a></li>
-                </ol>
+                </ul>
             </div>
 
         </nav>
 
+
+        </nav>
     </header>
-    <main>
-        <p>Hello! I am purva jadhao <br>
-            I am currently learning at ITvedat Full stack builder course <br>
-    </main>
-
-    <footer>
-
-    </footer>
-    </p>
 
 </body>
 
