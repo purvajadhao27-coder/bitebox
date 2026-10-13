@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Purva">
+    <meta name="keywords" content="food, burger, pizza, panipuri, sandwich">
+    <title>BiteBox Ecommerce Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="biteboxproduct.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* Global Styles */
+        * {
+            font-family: "Inconsolata", monospace;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #fffaf5;
+            color: #49352e;
+        }
+
+        header {
+            width: 100%;
+        }
+
+        /* Navbar */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff0e8;
+            padding: 12px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(92, 58, 42, 0.10);
+        }
+
+        nav #logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #713f35;
+        }
+
+        nav #logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f1c7b5;
+        }
+
+        nav #logo h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        nav #menu ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        nav #menu ul li {
+            position: relative;
+        }
+
+        nav #menu ul li a {
+            display: inline-block;
+            text-decoration: none;
+            color: #713f35;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 14px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav #menu ul li a:hover {
+            color: #ffffff;
+            background-color: #c77d70;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(199, 125, 112, 0.25);
+        }
+
+        /* Main Content */
+        main {
+            width: 100%;
+            min-height: 80vh;
+            padding: 110px 30px 30px;
+        }
+
+        .main_content {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .main_content h2 {
+            font-size: 30px;
+            text-align: center;
+            color: #713f35;
+            padding-bottom: 15px;
+            margin: 20px 0;
+            border-bottom: 2px solid #e8b8a6;
+        }
+
+        /* Product Grid */
+        .product_container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #f0d9ce;
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(92, 58, 42, 0.07);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(92, 58, 42, 0.13);
+            border-color: #e4b3a1;
+        }
+
+        .product_logo {
+            width: 100%;
+            height: 210px;
+            border: 1px solid #f3e3da;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #fffaf6;
+        }
+
+        .product_logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .product_logo img {
+            transform: scale(1.05);
+        }
+
+        .product_detail {
+            padding-top: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .product_detail h1 {
+            font-size: 24px;
+            color: #713f35;
+        }
+
+        .description {
+            color: #77665e;
+            font-size: 15px;
+            line-height: 1.5;
+            min-height: 42px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #b45f4d;
+        }
+
+        /* General Buttons */
+        button {
+            width: fit-content;
+            padding: 10px 16px;
+            border: none;
+            background-color: #c77d70;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a95e51;
+            transform: translateY(-2px);
+        }
+
+        /* Search Box */
+        #search {
+            width: 250px;
+            padding: 11px 16px;
+            border: 2px solid #f1c7b5;
+            border-radius: 25px;
+            outline: none;
+            background-color: #ffffff;
+            color: #49352e;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(92, 58, 42, 0.08);
+        }
+
+        #search::placeholder {
+            color: #a58b80;
+        }
+
+        #search:hover {
+            border-color: #c77d70;
+            box-shadow: 0 4px 12px rgba(199, 125, 112, 0.15);
+        }
+
+        #search:focus {
+            border-color: #c77d70;
+            background-color: #fffaf5;
+            box-shadow: 0 0 0 4px rgba(199, 125, 112, 0.15);
+        }
+
+        footer {
+            width: 100%;
+            min-height: 10vh;
+            background-color: #f5ded3;
+            color: #713f35;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Cart Modal */
+        #exampleModal .modal-content {
+            border: none;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        #exampleModal .modal-header {
+            background-color: #fff0e8;
+            color: #713f35;
+            padding: 20px 24px;
+        }
+
+        #exampleModal .modal-body {
+            background-color: #fffaf5;
+            padding: 24px;
+            overflow-x: auto;
+        }
+
+        /* Cart Buttons */
+        #exampleModal .modal-footer button {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Close Button */
+        #exampleModal .btn-secondary {
+            background-color: #f1e5df;
+            color: #713f35;
+        }
+
+        #exampleModal .btn-secondary:hover {
+            background-color: #e4c8bc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(113, 63, 53, 0.15);
+        }
+
+        /* Buy Now Button */
+        #exampleModal .btn-primary {
+            background-color: #c77d70;
+            color: #ffffff;
+            border: none;
+        }
+
+        #exampleModal .btn-primary:hover {
+            background-color: #a95e51;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(169, 94, 81, 0.25);
+        }
+
+        /* Button Click Effect */
+        #exampleModal .modal-footer button:active {
+            transform: scale(0.97);
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+            <div id="logo">
+                <img src="bitebox.logo.jpg" alt="BiteBox Logo">
+                <h3>BiteBox</h3>
+            </div>
+
+            <div id="menu">
+                <ul>
+                    <li><a href="https://www.swiggy.com/instamart">Home</a></li>
+                    <li><a>Contact Us</a></li>
+                    <li><a>About Us</a></li>
+                    <li data-bs-toggle="modal" data-bs-target="#exampleModal" id="cartModal"
+                        class="nav-item position-relative">
+                        <a>
+                            Cart
+                            <span id="qty"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </a>
+                    </li>
+                    <li><a>Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main_content">
+            <label for="search">Search</label>
+            <input type="search" id="search" name="search" placeholder="search product's here..."
+                oninput="searchProduct()">
+            <h2>Our Products</h2>
+
+            <div class="product_container" id="product_container">
+
+                <!-- <div class="card">
+                    <section class="product_logo">
+                        <img src="panipuri.logo/burgur.logo.jpg" alt="Burger">
+                    </section>
+                    <section class="product_detail">
+                        <h1>Burger</h1>
+                        <p class="description">
+                            Juicy burger loaded with fresh vegetables,
+                            cheese and delicious sauces.
+                        </p>
+                        <p class="price">$10</p>
+                        <button>Add to Cart</button>
+                    </section>
+                </div>
+
+                <div class="card">
+                    <section class="product_logo">
+                        <img src="panipuri.logo/panipuri.logo.jpg" alt="Panipuri">
+                    </section>
+                    <section class="product_detail">
+                        <h1>Panipuri</h1>
+                        <p class="description">
+                            Crispy panipuri filled with spicy,
+                            tangy and refreshing flavors.
+                        </p>
+                        <p class="price">$5</p>
+                        <button>Add to Cart</button>
+                    </section>
+                </div>
+
+                <div class="card">
+                    <section class="product_logo">
+                        <img src="panipuri.logo/pizza.logo.jpg" alt="Pizza">
+                    </section>
+                    <section class="product_detail">
+                        <h1>Pizza</h1>
+                        <p class="description">
+                            Freshly baked pizza topped with cheese,
+                            vegetables and tasty seasonings.
+                        </p>
+                        <p class="price">$15</p>
+                        <button>Add to Cart</button>
+                    </section>
+                </div>
+
+                <div class="card">
+                    <section class="product_logo">
+                        <img src="panipuri.logo/sandwich.logo.jpg" alt="Sandwich">
+                    </section>
+                    <section class="product_detail">
+                        <h1>Sandwich</h1>
+                        <p class="description">
+                            Fresh and tasty sandwich packed with
+                            vegetables and delicious sauces.
+                        </p>
+                        <p class="price">$12</p>
+                        <button>Add to Cart</button>
+                    </section>
+                </div> -->
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Your Basket</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body" id="billing"></div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Buy now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Not available</p>
+    </footer>
+
+</body>
+
+</html>

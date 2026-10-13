@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteBox Sign Up</title>
+
+    <script>
+
+        function register() {
+            // e.preventDefault(); // Prevent form submission
+
+            let uname = document.getElementById("fullname").value;
+            let uemail = document.getElementById("email").value;
+            let upass = document.getElementById("password").value;
+
+            const user = {
+                username: uname,
+                email: uemail,
+                userpassword: upass,
+            };
+            const users = JSON.parse(localStorage.getItem("registerUsers")) || []; //array created here
+            users.push(user); //pushing row to array
+            localStorage.setItem("registerUsers", JSON.stringify(users));
+            alert("Registration Successful");
+        }
+
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.8), transparent 25%),
+                radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.7), transparent 25%),
+                linear-gradient(135deg, #f8dce7, #e4d9f8, #d8ecf7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 20px;
+            align-items: flex-start;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            background: rgba(255, 182, 193, 0.35);
+            border-radius: 50%;
+            top: -100px;
+            left: -80px;
+            filter: blur(10px);
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(180, 160, 255, 0.3);
+            border-radius: 50%;
+            bottom: -120px;
+            right: -80px;
+            filter: blur(10px);
+        }
+
+        .signup-box {
+            position: relative;
+            z-index: 1;
+            width: 400px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 45px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow:
+                0 25px 50px rgba(100, 80, 120, 0.18),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 28px;
+            color: #703f96;
+            font-size: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #51445a;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            margin-bottom: 17px;
+            box-sizing: border-box;
+            border: 1px solid rgba(150, 130, 160, 0.25);
+            border-radius: 12px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.72);
+            color: #444;
+            font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #b78bd0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 0 4px rgba(183, 139, 208, 0.12);
+        }
+
+        input[type="range"] {
+            padding: 0;
+        }
+
+        input[type="checkbox"] {
+            width: auto;
+        }
+
+        .terms label {
+            display: inline;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .buttons input {
+            cursor: pointer;
+            border: none;
+            padding: 13px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .register {
+            background: linear-gradient(135deg, #b784d7, #8e62b0);
+            color: white;
+            box-shadow: 0 8px 20px rgba(126, 82, 158, 0.25);
+        }
+
+        .register:hover {
+            background: linear-gradient(135deg, #a66bc9, #7d519f);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(126, 82, 158, 0.35);
+        }
+
+        .reset {
+            background: rgba(255, 255, 255, 0.7);
+            color: #765681;
+            border: 1px solid rgba(150, 130, 160, 0.2) !important;
+        }
+
+        .reset:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-2px);
+        }
+
+        .login-text {
+            text-align: center;
+            margin-top: 22px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="signup-box">
+        <h2>BiteBox Sign Up</h2>
+        <form>
+            <label>Full Name:</label>
+            <input type="text" id="fullname" placeholder="purva jadhao">
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="purva@gmail.com">
+            <label>Password:</label>
+            <input type="password" id="password" placeholder="Enter password here ">
+            <br>
+
+            <div class="buttons">
+                <input type="button" value="Sign Up" onclick="register()">
+                <input type="reset" value="Reset" class="reset">
+            </div>
+
+        </form>
+
+        <p class="login-text">
+            Already have an account? Login
+        </p>
+
+    </div>
+
+</body>
+
+</html>
